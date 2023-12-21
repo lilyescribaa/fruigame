@@ -1,0 +1,55 @@
+//grape balls
+noStroke();
+fill(140, 0, 255);
+ellipse (44, 76, 15, 15);
+ellipse(55, 76, 15, 15);
+ellipse(67,76, 15, 15);
+ellipse(49, 88, 15, 15);
+ellipse(61, 88, 15, 15);
+ellipse(56, 99,15,15);
+
+//leaf
+fill(128, 173, 52);
+arc(56,59, 13, 20, -65, 107);
+//stem
+fill(105, 48, 48);
+arc(50, 59, 8, 26, -123, 55);
+
+
+//orange
+fill(217, 137, 17);
+ellipse(56, 181, 30, 30);
+//stem and leaf
+fill(105, 48, 48);
+arc(54, 157, 8, 26, -123, 55);
+
+fill(128, 173, 52);
+arc(60, 158, 13, 20, -65, 107);
+
+//CHERYY
+//stem
+fill(255, 252, 255);
+stroke(128, 173, 52);
+strokeWeight(3);
+arc(63, 225,30, 46, -255, -123);
+//leaf
+
+//red circle
+noStroke();
+fill(255, 0, 0);
+ellipse(56, 261, 30, 30);
+
+
+//knife drawing
+var drawKnife = function(xPos, yPos, knifeHeight){
+fill(145, 130, 130);
+arc(xPos+(knifeHeight/100*162), yPos+(knifeHeight/100*73),(knifeHeight/100*23), (knifeHeight/100*91), -453, -324);
+fill(71, 62, 48);
+rect(xPos+(knifeHeight/100*162), yPos+(knifeHeight/100*75), (knifeHeight/100*12), (knifeHeight/100*48));
+fill(255, 255, 255);
+ellipse(xPos+(knifeHeight/100*168), yPos+(knifeHeight/100*115), (knifeHeight/100*5), (knifeHeight/100*5));
+ellipse(xPos+(knifeHeight/100*168), yPos+(knifeHeight/100*97), (knifeHeight/100*5), (knifeHeight/100*5));
+ellipse(xPos+(knifeHeight/100*168), yPos+(knifeHeight/100*81), (knifeHeight/100*5), (knifeHeight/100*5));
+};
+
+drawKnife(200, 200,63);
