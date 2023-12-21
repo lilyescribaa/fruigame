@@ -1,0 +1,43 @@
+noFill();
+background(79, 60, 40); //sky color
+//background(103, 205, 207);
+
+//blue filling
+noStroke();
+
+fill(115, 166, 121);
+rect(-7, -5, 408, 119, 10);
+ellipse(0, 234, 59, 255);
+ellipse(18, 234, 59, 255);
+ellipse(91, 225, 40, 249);
+ellipse(155, 233, 48, 249);
+ellipse(232, 233, 71, 249);
+ellipse(312, 223, 50, 249);
+ellipse(387, 222, 59, 255);
+
+//light green circles from left to right
+fill(0, 110, 18);
+noStroke();
+ellipse(55, 74, 96, 138);
+ellipse(116, 84, 70, 100);
+ellipse(189, 81, 97, 177);
+ellipse(274, 77, 95, 130);
+ellipse(342, 64, 117, 153);
+
+//dark green circles
+fill(37, 92, 45);
+ellipse(88, 64, 90, 130);
+ellipse(227, 64, 70, 130);
+ellipse(322, 64, 90, 140);
+
+//3rd green color
+fill(20, 89, 30);
+ellipse(4, 37, 98, 144);
+ellipse(150, 22, 81, 127);
+ellipse(290, 47, 81, 127);
+ellipse(419, 37, 98, 144);
+
+
+//bottom ground
+fill(105, 83, 41);
+rect(-3, 341, 408, 60, 10);
