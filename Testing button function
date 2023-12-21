@@ -1,0 +1,482 @@
+var currentScene = 0;
+var numOranges = 10;  //variable to set the number of bitmojis
+var numWatermelons = 10;
+var numStrawberrys = 10;
+var numGrapes = 10;
+var numPineapples = 10;
+var numApples = 10;
+
+var drawBitmoji = function (xPos,yPos,bitmojiHeight){
+//head
+noStroke();
+fill(240, 219, 173);
+ellipse(xPos+(bitmojiHeight/100*100), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*65, bitmojiHeight/100*90);//face
+fill(138, 87, 48);
+arc(xPos+(bitmojiHeight/100*75), yPos+(bitmojiHeight/100*55), bitmojiHeight/100*50, bitmojiHeight/100*50, 1, 100);//top of hair
+arc(xPos+(bitmojiHeight/100*120), yPos+(bitmojiHeight/100*55), bitmojiHeight/100*50, bitmojiHeight/100*50, 75,180);//pulled back hair left
+arc(xPos+(bitmojiHeight/100*98), yPos+(bitmojiHeight/100*65), bitmojiHeight/100*72, bitmojiHeight/100*40,180,360);//pulled back hair right
+strokeWeight(bitmojiHeight/100*14);
+stroke(138, 87, 48);
+line(xPos+(bitmojiHeight/100*68), yPos+(bitmojiHeight/100*68), xPos+(bitmojiHeight/100*68), yPos+(bitmojiHeight/100*150));//hair down left
+line(xPos+(bitmojiHeight/100*128), yPos+(bitmojiHeight/100*69), xPos+(bitmojiHeight/100*128), yPos+(bitmojiHeight/100*150));//hair down right
+strokeWeight(bitmojiHeight/100*2);
+stroke(250, 135, 154);
+fill(255, 255, 255);
+arc(xPos+(bitmojiHeight/100*99), yPos+(bitmojiHeight/100*125), bitmojiHeight/100*30, bitmojiHeight/100*13, 1, 180);//mouth
+line(xPos+(bitmojiHeight/100*85), yPos+(bitmojiHeight/100*124), xPos+(bitmojiHeight/100*113), yPos+(bitmojiHeight/100*124));//upper lip
+strokeWeight(bitmojiHeight/100*0.5);
+stroke(0, 0, 0);
+ellipse(xPos+(bitmojiHeight/100*90), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*9, bitmojiHeight/100*7);//whites left eye
+ellipse(xPos+(bitmojiHeight/100*110), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*9, bitmojiHeight/100*7);//whites right eye
+fill(84, 149, 201);
+noStroke();
+ellipse(xPos+(bitmojiHeight/100*90), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*6, bitmojiHeight/100*6);//blue part of eye left
+ellipse(xPos+(bitmojiHeight/100*110), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*6, bitmojiHeight/100*6);//blue part of eye right
+fill(0, 0, 0);
+ellipse(xPos+(bitmojiHeight/100*90), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*2, bitmojiHeight/100*2);//black center left eye
+ellipse(xPos+(bitmojiHeight/100*110), yPos+(bitmojiHeight/100*100), bitmojiHeight/100*2, bitmojiHeight/100*2);//black center right eye
+fill(150, 162, 217);
+rect(xPos+(bitmojiHeight/100*50), yPos+(bitmojiHeight/100*150), bitmojiHeight/100*100, bitmojiHeight/100*50);//top
+fill(240, 219, 173);
+rect(xPos+(bitmojiHeight/100*90), yPos+(bitmojiHeight/100*140), bitmojiHeight/100*20, bitmojiHeight/100*20);//neck
+fill(255, 255, 255);
+ellipse(xPos+(bitmojiHeight/100*69), yPos+(bitmojiHeight/100*101), bitmojiHeight/100*7, bitmojiHeight/100*7);//left airpod
+ellipse(xPos+(bitmojiHeight/100*128), yPos+(bitmojiHeight/100*101), bitmojiHeight/100*7, bitmojiHeight/100*7);//right airpod
+rect(xPos+(bitmojiHeight/100*66), yPos+(bitmojiHeight/100*103), bitmojiHeight/100*4, bitmojiHeight/100*10);//left airpod
+rect(xPos+(bitmojiHeight/100*127), yPos+(bitmojiHeight/100*103), bitmojiHeight/100*4, bitmojiHeight/100*10);//right airpod
+rect(xPos+(bitmojiHeight/100*62), yPos+(bitmojiHeight/100*170), bitmojiHeight/100*4, bitmojiHeight/100*20);//m
+strokeWeight(bitmojiHeight/100*4);
+stroke(255, 255, 255);
+line(xPos+(bitmojiHeight/100*64), yPos+(bitmojiHeight/100*168), xPos+(bitmojiHeight/100*73), yPos+(bitmojiHeight/100*179));//m
+line(xPos+(bitmojiHeight/100*73), yPos+(bitmojiHeight/100*179), xPos+(bitmojiHeight/100*80), yPos+(bitmojiHeight/100*168));//m
+rect(xPos+(bitmojiHeight/100*80),yPos+(bitmojiHeight/100*167), bitmojiHeight/100*0, bitmojiHeight/100*23);//m
+rect(xPos+(bitmojiHeight/100*120), yPos+(bitmojiHeight/100*166), bitmojiHeight/100*0, bitmojiHeight/100*21);//l
+rect(xPos+(bitmojiHeight/100*120), yPos+(bitmojiHeight/100*186), bitmojiHeight/100*12, bitmojiHeight/100*1);//l
+
+
+};
+var drawWatermelon = function (myWatermelon){
+//watermelon
+var v = myWatermelon.h/100;
+fill(81, 219, 81);
+noStroke();
+arc(myWatermelon.x+(v*50), myWatermelon.y+(v*50), v*50, v*55, 0, 180);
+fill(255, 255, 255);
+arc(myWatermelon.x+(v*50), myWatermelon.y+(v*50), v*45, v*50, 0, 180); 
+fill(250, 68, 68);
+arc(myWatermelon.x+(v*50), myWatermelon.y+(v*50), v*40, v*45, 0, 180);
+fill(0, 0, 0);
+ellipse(myWatermelon.x+(v*50), myWatermelon.y+(v*67), v*2, v*2); 
+ellipse(myWatermelon.x+(v*47), myWatermelon.y+(v*57), v*2, v*2); 
+ellipse(myWatermelon.x+(v*36), myWatermelon.y+(v*54), v*2, v*2); 
+ellipse(myWatermelon.x+(v*40), myWatermelon.y+(v*62), v*2, v*2); 
+ellipse(myWatermelon.x+(v*60), myWatermelon.y+(v*64), v*2, v*2); 
+ellipse(myWatermelon.x+(v*56), myWatermelon.y+(v*57), v*2, v*2); 
+ellipse(myWatermelon.x+(v*64), myWatermelon.y+(v*54), v*2, v*2); 
+};
+var drawApple = function(myApple){
+//apple
+    var a = myApple.h/100;
+    noStroke();
+    fill(50, 156, 57);
+    arc(myApple.x+(a*54), myApple.y+(a*139), a*13, a*20, -65, 107);
+    fill(74, 54, 21);
+    arc(myApple.x+(a*50), myApple.y+(a*137), a*8, a*26, -123, 55);
+    fill(204, 8, 8);
+    arc(myApple.x+(a*46), myApple.y+(a*161), a*24, a*34, 0, 360);
+    arc(myApple.x+(a*63), myApple.y+(a*161), a*24 , a*34 , 0, 360);
+    ellipse(myApple.x+(a*55), myApple.y+(a*173), a*7, a*7);  
+};
+var drawStrawberry = function (myStrawberry){
+//strawberry
+var z = myStrawberry.h/100;
+noStroke();
+fill(227, 32, 84);
+triangle(myStrawberry.x+(z*171), myStrawberry.y+(z*55), myStrawberry.x+(z*192), myStrawberry.y+(z*60),myStrawberry.x+(z*188), myStrawberry.y+(z*94));
+triangle(myStrawberry.x+(z*220), myStrawberry.y+(z*57), myStrawberry.x+(z*202), myStrawberry.y+(z*61),myStrawberry.x+(z*205), myStrawberry.y+(z*96));
+ellipse(myStrawberry.x+(z*197), myStrawberry.y+(z*79), (z*25), (z*42));
+ellipse(myStrawberry.x+(z*196), myStrawberry.y+(z*54), (z*49), (z*24));
+fill(82, 143, 52);
+arc(myStrawberry.x+(z*197),myStrawberry.y+(z*33), (z*12), (z*40), -65, 107);
+arc(myStrawberry.x+(z*187), myStrawberry.y+(z*39), (z*14), (z*29), 60, 236);
+arc(myStrawberry.x+(z*187), myStrawberry.y+(z*39), (z*14), (z*29), 60, 236);
+fill(38, 99, 54);
+arc(myStrawberry.x+(z*193), myStrawberry.y+(z*33), (z*12), (z*40), 60, 245);
+arc(myStrawberry.x+(z*202), myStrawberry.y+(z*39), (z*14), (z*29), 306, 479);
+fill(34, 59, 34);
+arc(myStrawberry.x+(z*197), myStrawberry.y+(z*39), (z*10), (z*29), 47, 252);
+fill(0, 0, 0);
+ellipse(myStrawberry.x+(z*179), myStrawberry.y+(z*55), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*212), myStrawberry.y+(z*53), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*190), myStrawberry.y+(z*62), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*183), myStrawberry.y+(z*62), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*198), myStrawberry.y+(z*62), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*204), myStrawberry.y+(z*62), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*211), myStrawberry.y+(z*62), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*189), myStrawberry.y+(z*74), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*197), myStrawberry.y+(z*74), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*205), myStrawberry.y+(z*74), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*195), myStrawberry.y+(z*85), (z*2), (z*4));
+ellipse(myStrawberry.x+(z*201), myStrawberry.y+(z*85), (z*2), (z*4));
+};
+var drawPineapple = function (myPineapple){
+var l = myPineapple.h/100;
+//pineapple
+fill(255, 213, 0);
+ellipse(myPineapple.x+(l*194),  myPineapple.y+(l*183), (l*45), (l*65));
+stroke(230, 192, 0);
+line(myPineapple.x+(l*183),  myPineapple.y+(l*156), myPineapple.x+(l*216),  myPineapple.y+(l*180));
+line(myPineapple.x+(l*175),  myPineapple.y+(l*168), myPineapple.x+(l*214),  myPineapple.y+(l*197));
+line(myPineapple.x+(l*172), myPineapple.y+(l*185), myPineapple.x+(l*206), myPineapple.y+(l*210));
+line(myPineapple.x+(l*175), myPineapple.y+(l*170), myPineapple.x+(l*207), myPineapple.y+(l*148));    
+line(myPineapple.x+(l*173),  myPineapple.y+(l*190), myPineapple.x+(l*211), myPineapple.y+(l*163));
+line(myPineapple.x+(l*180),  myPineapple.y+(l*208), myPineapple.x+(l*217), myPineapple.y+(l*181));
+fill(82, 143, 52);
+noStroke();
+arc(myPineapple.x+(l*197),  myPineapple.y+(l*133), (l*12), (l*40), -65, 107);
+arc(myPineapple.x+(l*187),  myPineapple.y+(l*139), (l*14), (l*29), 60, 236);
+arc(myPineapple.x+(l*187),  myPineapple.y+(l*139), (l*14), (l*29), 60, 236);
+fill(38, 99, 54);
+arc(myPineapple.x+(l*193),  myPineapple.y+(l*133), (l*12), (l*40), 60, 245);
+arc(myPineapple.x+(l*202),  myPineapple.y+(l*139), (l*14), (l*29), 306, 479);
+fill(34, 59, 34);
+arc(myPineapple.x+(l*197), myPineapple.y+(l*139), (l*10), (l*29), 47, 252);
+};
+var drawGrape = function (myGrape){
+//grape balls
+var k = myGrape.h/100;
+noStroke();
+fill(95, 0, 135);
+ellipse(myGrape.x+(k*44), myGrape.y+(k*76), (k*15), (k*15));
+ellipse(myGrape.x+(k*55), myGrape.y+(k*76), (k*15), (k*15));
+ellipse(myGrape.x+(k*67), myGrape.y+(k*76), (k*15), (k*15));
+ellipse(myGrape.x+(k*49), myGrape.y+(k*88), (k*15), (k*15));
+ellipse(myGrape.x+(k*61), myGrape.y+(k*88), (k*15), (k*15));
+ellipse(myGrape.x+(k*56), myGrape.y+(k*99), (k*15),(k*15));
+//leaf
+fill(128, 173, 52);
+arc(myGrape.x+(k*56), myGrape.y+(k*59), (k*13), (k*20), -65, 107);
+//stem
+fill(105, 48, 48);
+arc(myGrape.x+(k*50), myGrape.y+(k*59), (k*8), (k*26), -123, 55);
+};
+var drawOrange = function (myOrange){
+//orange
+    var p = myOrange.h/100;
+    noStroke();
+    fill(217, 137, 17);
+    ellipse(myOrange.x+(p*56), myOrange.y+(p*181), (p*30), (p*30));
+    //stem and leaf
+    fill(105, 48, 48);
+    arc(myOrange.x+(p*54), myOrange.y+(p*157), (p*8), (p*26), -123, 55);
+    fill(128, 173, 52);
+    arc(myOrange.x+(p*60), myOrange.y+(p*158), (p*13), (p*20), -65, 107);
+};
+var drawKnife = function(xPos, yPos, knifeHeight){
+fill(145, 130, 130);
+arc(xPos+(knifeHeight/100*168), yPos+(knifeHeight/100*72),(knifeHeight/100*23), (knifeHeight/100*91), -93, 36);
+fill(71, 62, 48);
+rect(xPos+(knifeHeight/100*167), yPos+(knifeHeight/100*75), (knifeHeight/100*12), (knifeHeight/100*48));
+fill(255, 255, 255);
+ellipse(xPos+(knifeHeight/100*175), yPos+(knifeHeight/100*84), (knifeHeight/100*5), (knifeHeight/100*5));
+ellipse(xPos+(knifeHeight/100*174), yPos+(knifeHeight/100*111), (knifeHeight/100*5), (knifeHeight/100*5));
+ellipse(xPos+(knifeHeight/100*174), yPos+(knifeHeight/100*97), (knifeHeight/100*5), (knifeHeight/100*5));
+};
+
+
+/* Copy in the Khan Button class */
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+};
+
+Button.prototype.draw = function() {
+    fill(222, 155, 222);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() {
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+
+var btn1 = new Button({
+    x: 129,
+    y: 222,
+    label: "   Start Button",
+    onClick: function() {
+        currentScene = 1;
+    }
+});
+
+var splashScreen = function() {
+    background(237, 190, 237);
+    fill(102, 35, 102);
+    textSize(40);
+    text("Fruit Slicer",108, 120);
+    textSize(25);
+    text("By: Madelyn & Lily ", 103, 171);
+    rect(0, 0, 7, 400);
+    rect(393, 0, 7, 400);
+    drawApple(7, -63, 90);
+    drawPineapple(49, -60, 74);
+    drawOrange(287, -121, 107);
+    drawGrape(75, 1, 90);
+    drawStrawberry(125, 21, 73);
+    drawWatermelon(12, 87, 90);
+    drawWatermelon(297, 184, 90);
+    drawPineapple(-89, 110, 74);
+    drawPineapple(199, 28, 74);
+    drawApple(292, 193, 90);
+    drawGrape(216, 257, 90);
+    drawPineapple(57, 199, 74);
+    drawStrawberry(-84, 278, 73);
+    drawOrange(67, 145, 107);
+    
+    fill(220,208, 255);
+        btn1.draw();
+    
+};
+var drawScene1 = function() {
+noFill();
+background(79, 60, 40); //sky color
+noStroke();
+fill(115, 166, 121);
+rect(-7, -5, 408, 119, 10);
+ellipse(0, 234, 59, 255);
+ellipse(18, 234, 59, 255);
+ellipse(91, 225, 40, 249);
+ellipse(155, 233, 48, 249);
+ellipse(232, 233, 71, 249);
+ellipse(312, 223, 50, 249);
+ellipse(387, 222, 59, 255);
+
+fill(0, 110, 18);//light green circles from left to right
+noStroke();
+ellipse(55, 74, 96, 138);
+ellipse(116, 84, 70, 100);
+ellipse(189, 81, 97, 177);
+ellipse(274, 77, 95, 130);
+ellipse(342, 64, 117, 153);
+
+fill(37, 92, 45);//dark green circles
+ellipse(88, 64, 90, 130);
+ellipse(227, 64, 70, 130);
+ellipse(322, 64, 90, 140);
+
+fill(20, 89, 30);
+ellipse(4, 37, 98, 144);
+ellipse(150, 22, 81, 127);
+ellipse(290, 47, 81, 127);
+ellipse(419, 37, 98, 144);
+
+fill(105, 83, 41);
+rect(-3, 341, 408, 60, 10);
+
+fill(21, 61, 11);
+ellipse(24, 318, 60, 60);
+ellipse(60, 328, 40, 40);
+ellipse(88, 311, 40, 40);
+ellipse(49, 293, 40, 40);
+ellipse(74, 293, 40, 40);
+ellipse(102, 302, 50, 50);
+ellipse(91, 332, 40, 40);
+ellipse(44, 270, 100, 120);
+ellipse(108, 289, 65, 70);
+ellipse(94, 249, 40, 40);
+
+ellipse(388, 318, 60, 60); //right bushes
+ellipse(357, 328, 40, 40);
+ellipse(362, 311, 40, 40);
+ellipse(369, 293, 40, 40);
+ellipse(339, 293, 40, 40);
+ellipse(311, 302, 50, 50);
+ellipse(336, 332, 40, 40);
+ellipse(371, 268, 100, 90);
+};
+
+var orangeX = [];
+var orangeY = [];
+var orangeSpeed = [];
+
+
+for(var i = 1; i < numOranges; i++){
+     orangeX.push(round(random(-331, 349)));
+     orangeY.push(round(random(-184, 208)));
+     orangeSpeed.push(round(random(0.5, 2.4)));
+}
+
+var watermelonX = [];
+var watermelonY = [];
+var watermelonSpeed = [];
+
+for(var w = 1; w < numWatermelons; w++){
+     watermelonX.push(round(random(-331, 350)));
+     watermelonY.push(round(random(-48, 257)));
+     watermelonSpeed.push(round(random(0.5, 2.4)));
+}
+
+var strawberryX = [];
+var strawberryY = [];
+var strawberrySpeed = [];
+
+for(var s = 1; s < numStrawberrys; s++){
+     strawberryX.push(round(random(-331, 350)));
+     strawberryY.push(round(random(-36, 257)));
+     strawberrySpeed.push(round(random(0.5, 2.4)));
+}
+
+var grapeX = [];
+var grapeY = [];
+var grapeSpeed = [];
+
+for(var f = 1; f < numGrapes; f ++){
+     grapeX.push(round(random(-334, 350)));
+     grapeY.push(round(random(-63, 257)));
+     grapeSpeed.push(round(random(0.5, 2.4)));
+}
+
+var pineappleX = [];
+var pineappleY = [];
+var pineappleSpeed = [];
+
+for(var f = 1; f < numPineapples; f ++){
+     pineappleX.push(round(random(-631, 308)));
+     pineappleY.push(round(random(-88, 253)));
+     pineappleSpeed.push(round(random(0.5, 2.4)));
+}
+
+var appleX = [];
+var appleY = [];
+var appleSpeed = [];
+
+for(var d = 1; d < numApples; d++){
+     appleX.push(round(random(-251, 350)));
+     appleY.push(round(random(-88, 231)));
+     appleSpeed.push(round(random(0.5, 2.4)));
+}
+
+
+var mouseClicked = function(){
+    
+  for(var j = 0; j < numOranges; ++j){
+      if(mouseX > orangeX[j] && mouseX < orangeX[j] + 50 && mouseY > orangeY[j] && mouseY < orangeY[j] + 50)
+      {
+          orangeY[j] = 500;
+          
+            for (var u = 0; u < numWatermelons; ++u) {
+                if (mouseX > watermelonX[u] && mouseX < watermelonX[u] + 50 && mouseY > watermelonY[u] && mouseY < watermelonY[u] + 50 ) {
+                    watermelonY[u] = 500;
+                   
+                for (var t = 0; t < numStrawberrys; ++t) {
+                    if (mouseX > strawberryX[t] && mouseX < strawberryX[t] + 50 && mouseY > strawberryY[t] && mouseY < strawberryY[t] + 50 ) {
+                    strawberryY[t] = 500;
+                    
+                    for (var h = 0; h < numGrapes; ++h) {
+                        if (mouseX > grapeX[h] && mouseX < grapeX[h] + 50 && mouseY > grapeY[h] && mouseY < grapeY[h] + 50 ) {
+                    grapeY[h] = 500;
+                            
+                        for (var n = 0; n < numPineapples; ++n) {
+                            if (mouseX > pineappleX[n] && mouseX < pineappleX[n] + 50 && mouseY > pineappleY[n] && mouseY < pineappleY[n] + 50 ) {
+                    pineappleY[n] = 500;
+                            for (var c = 0; c < numApples; ++c) {
+                                if (mouseX > appleX[c] && mouseX < appleX[c] + 50 && mouseY > appleY[c] && mouseY < appleY[c] + 50) {
+                    appleY[c] = 500;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
+
+var endScreen = function () {
+    background(237, 190, 237);
+    fill(102, 35, 102);
+    textSize(70);
+    text("Score: ", 18, 83);
+
+};
+draw = function() {
+    if (currentScene ===0) {
+        btn1.handleMouseClick();
+        splashScreen();
+    }
+    else if (currentScene === 1) {
+        drawScene1();
+        btn1.handleMouseClick();
+            for(var i = 0; i < orangeX.length; i++){
+        drawOrange({x:orangeX[i], y:orangeY[i], h:100});
+        orangeX[i] += orangeSpeed[i];
+        if(orangeX[i]>400){
+            orangeX[i] = round(random(-40,40));
+              }  
+         }
+        for(var w = 0; w < watermelonX.length; w++){
+            drawWatermelon({x:watermelonX[w], y:watermelonY[w], h:100});
+            watermelonX[w] += watermelonSpeed[w];
+            if(watermelonX[w]>400){
+                watermelonX[w] = round(random(-40,40));
+                     }   
+            }
+            for(var s = 0; s < strawberryX.length; s++){
+                drawStrawberry({x:strawberryX[s], y:strawberryY[s], h:74});
+                strawberryX[s] += strawberrySpeed[s];
+                if(strawberryX[s]>400){
+                    strawberryX[s] = round(random(-40,40));
+                         }   
+                }
+                for(var f = 0; f < grapeX.length; f++){
+                    drawGrape({x:grapeX[f], y:grapeY[f], h:100});
+                    grapeX[f] += grapeSpeed[f];
+                    if(grapeX[f]>400){
+                        grapeX[f] = round(random(-40,40));
+                                 }   
+                             }
+                    for(var m = 0; m < pineappleX.length; m++){
+                        drawPineapple({x:pineappleX[m], y:pineappleY[m], h:69});
+                        pineappleX[m] += pineappleSpeed[m];
+                        if(pineappleX[m]>400){
+                            pineappleX[m] = round(random(-40,40));
+                                 }   
+                             }
+                       for(var d = 0; d < appleX.length; d++){
+                        drawApple({x:appleX[d], y:appleY[d], h:100});
+                        appleX[d] += appleSpeed[d];
+                        if(appleX[d]>400){
+                            appleX[d] = round(random(-40,40));
+                                 }   
+                             }
+    //drawKnife(mouseX, mouseY, 50);
+    //fill(148, 148, 148);
+    //rect(mouseX, mouseY, 10, 50);
+    fill(255, 0, 0);
+    ellipse(mouseX, mouseY, 50, 50);
+    
+    }
+
+};
+
